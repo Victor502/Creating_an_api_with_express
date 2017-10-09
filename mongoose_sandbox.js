@@ -97,6 +97,7 @@ db.once("open", function(){
             if (err) console.error(err);
             Animal.findOne({type: "elephant"},function(err, elephant){
                 elephant.findSameColor(function(err, aniamls){
+                    if (err) console.error(err);
                     animals.forEach(function(animal){
                     console.log(aniaml.name + " the " + animal.color + " " + animal.type + " is a " + animal.size + "-sized animal.");
                     });
