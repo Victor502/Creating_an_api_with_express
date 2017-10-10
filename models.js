@@ -9,9 +9,9 @@ var sortAnswers = function(a , b){
     // 0 no change
     // + if a after b
     if(a.votes === b.votes){
-        return a.updatedAt - b.updatedAt;
+        return b.updatedAt - a.updatedAt;
     }
-    return a.votes - b.votes;
+    return b.votes - a.votes;
 };
 
 var AnswerSchema = new Schema({
@@ -35,7 +35,7 @@ AnswerSchema.method("vote", function(vote, callback){
     this.parent().save(callback);
 });
 
-var QuestionSchema = new Schma({
+var QuestionSchema = new Schema({
     text: String,
     createdAt: {type: Date, default: Date.now},
     answers: [AnswerSchema]

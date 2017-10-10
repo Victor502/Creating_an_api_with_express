@@ -17,7 +17,7 @@ mongoose.connect("mongodb://localhost:27017/qa");
 var db = mongoose.connection;
 
 db.on("error", function(err){
-    console.error("Connection error:", err);
+    console.error("connection error:", err);
 });
 
 db.once("open", function(){
@@ -27,7 +27,7 @@ db.once("open", function(){
 app.use("/questions", routes);
 
 //catch 404 and forward to err handler
-app.use( function(req, res, next){
+app.use(function(req, res, next){
     var err = new Error("Not found");
     err.status = 404;
     next(err);

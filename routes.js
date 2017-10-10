@@ -30,7 +30,7 @@ router.param("aID", function(req, res, next, id){
 // GET /questions
 // Route for questions collection
 router.get("/", function(req, res, next){
-    Question.find({}
+    Question.find({})
                   .sort({createdAt: -1}) 
                   .exec(function(err, questions){
                         if(err) return next(err);
@@ -71,7 +71,7 @@ router.post("/:qID/answers", function(req, res, next){
 // PUT /questions/:id/answers/:aID
 // Edit a specific answer
 router.put("/:qID/answers/:aID",  function(req, res){
-    res.answer.update(req.body, function(err, results){
+    req.answer.update(req.body, function(err, results){
         if(err) return next(err);
         res.json(results);
     });
