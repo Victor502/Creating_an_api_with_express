@@ -57,6 +57,28 @@ router.get("/:qID", function(req, res, next){
 });
 
 
+
+
+
+
+
+
+
+// DELETE /questions/:id/answers/:aID
+// Delete a question
+router.delete("/:qID",  function(req, res){
+    req.question.remove(function(err, question){
+            if(err) return next(err);
+            res.json(question);
+    });
+});
+
+
+
+
+
+
+
 // POST /questions/:qID/answers
 // Route for creating an answer
 router.post("/:qID/answers", function(req, res, next){
@@ -67,6 +89,9 @@ router.post("/:qID/answers", function(req, res, next){
         res.json(question);
     });
 });
+
+
+
 
 // PUT /questions/:id/answers/:aID
 // Edit a specific answer
